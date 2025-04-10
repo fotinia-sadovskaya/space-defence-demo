@@ -7,8 +7,16 @@ import { showToast } from "../utils/notify.js";
 import { playSound } from "../utils/sound.js";
 import { isUpgradeOwned } from "./store.js";
 import { setPlayerName } from "./profile.js";
+import { updateHUD } from "./ui.js";
 
-// 🎮 Основні масиви та canvas
+// 🧠 Автоматичне оновлення HUD після HTMX
+window.addEventListener("htmx:afterSwap", (e) => {
+  if (e.detail.target.id === "hud-container") {
+    updateHUD(); // Показати зброю, очки, рекорд, онлайн
+  }
+});
+
+// 🎮 Ініціалізація гри. Основні масиви та canvas
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
