@@ -6,6 +6,7 @@ import { updateScore, updateHighScoreUI } from "./score.js";
 import { showToast } from "../utils/notify.js";
 import { playSound } from "../utils/sound.js";
 import { isUpgradeOwned } from "./store.js";
+import { setPlayerName } from "./profile.js";
 
 // 🎮 Основні масиви та canvas
 const canvas = document.getElementById("gameCanvas");
@@ -157,3 +158,11 @@ document.body.addEventListener("htmx:afterSwap", (e) => {
     updateHighScoreUI();
   }
 });
+
+// 🔐 Функція для збереження імені з форми
+window.setPlayerNameFromInput = function () {
+  const input = document.getElementById("playerNameInput");
+  if (input) {
+    setPlayerName(input.value);
+  }
+};
