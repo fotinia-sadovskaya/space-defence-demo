@@ -3,24 +3,294 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: black;
   color: white;
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   overflow: hidden;
 }
+
 #gameCanvas {
   position: absolute;
   z-index: 0;
+  display: block;
   width: 100vw;
   height: 100vh;
+  background: url("../images/background.jpg") center/cover no-repeat;
 }
+
 .hud,
 .store,
 .profile {
   position: absolute;
   z-index: 10;
 }
+
+.hud {
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.hud__title {
+  font-size: 18px;
+  color: gold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.hud__highscore {
+  color: gold;
+  font-weight: bold;
+}
+
+.hud__weapon,
+.hud__score {
+  font-size: 16px;
+  color: greenyellow;
+}
+
+.hud__players {
+  font-size: 16px;
+  color: lightblue;
+}
+.hud__lives {
+  font-size: 16px;
+  color: lightcoral;
+}
+
+.hud__weapon::before,
+.hud__score::before,
+.hud__highscore::before,
+.hud__players::before {
+  margin-right: 5px;
+}
+
+.hud__btn,
+.store__btn {
+  margin-top: 10px;
+  background: linear-gradient(to right, #1f1f1f, #3a3a3a);
+  color: lightcyan;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.hud__btn:hover {
+  background: linear-gradient(to right, #2c2c2c, #555);
+}
+
+.explosion {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url("assets/images/explosion.png");
+  background-size: cover;
+  pointer-events: none;
+  animation: explode 0.3s ease-out;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.store {
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: left;
+  color: white;
+}
+
+.store__title {
+  font-size: 18px;
+  color: gold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.store__coins {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: lightgreen;
+  text-align: left;
+}
+
+.store__items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.store__item {
+  display: flex;
+  justify-content: left;
+}
+
+.store__btn:hover {
+  background: linear-gradient(to right, #2c2c2c, #555);
+}
+
+.store__close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #ccc;
+  cursor: pointer;
+}
+.store__close:hover {
+  color: white;
+}
+.store__close:focus {
+  outline: none;
+}
+.store__close:active {
+  transform: scale(0.95);
+}
+
+.store__btn--owned {
+  background-color: #333;
+  color: gray;
+  border-color: #555;
+  cursor: not-allowed;
+}
+.store__btn--owned:hover {
+  background-color: #333;
+  color: gray;
+  border-color: #555;
+}
+.store__btn--owned:active {
+  transform: none;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast--hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(100%);
+}
+.toast--error {
+  background: rgba(255, 0, 0, 0.85);
+}
+
+.profile {
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.profile__title {
+  font-size: 18px;
+  color: gold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile__label {
+  font-size: 14px;
+  color: white;
+}
+
+.profile__input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #777;
+  background-color: #222;
+  color: white;
+  font-size: 14px;
+}
+
+.profile__btn {
+  padding: 6px;
+  font-size: 14px;
+  background: linear-gradient(to right, #1f1f1f, #3a3a3a);
+  border: 1px solid #888;
+  border-radius: 5px;
+  color: lightcyan;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.profile__btn:hover {
+  background: linear-gradient(to right, #2c2c2c, #555);
+}
+
+.profile__close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #ccc;
+  cursor: pointer;
+}
+.profile__close:hover {
+  color: white;
+}
+.profile__close:focus {
+  outline: none;
+}
+.profile__close:active {
+  transform: scale(0.95);
+}
+
+/* 
+
+
 
 .hud {
   position: absolute;
@@ -231,4 +501,4 @@ body {
 }
 .store__close:focus-visible {
   outline: 2px solid lightskyblue;
-}
+} */
