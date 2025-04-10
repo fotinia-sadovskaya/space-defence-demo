@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Defence 🚀</title>
+
+    <link rel="stylesheet" href="assets/styles/styles.css" />
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Ігрове полотно -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- HUD (Очки, Зброя, Рекорд, Онлайн) -->
+    <section
+      id="hud-container"
+      data-hx-get="partials/ui-hud.partial.html"
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+    ></section>
+
+    <!-- Магазин -->
+    <section
+      id="store-container"
+      data-hx-get="partials/ui-store.partial.html"
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+    ></section>
+
+    <!-- Профіль -->
+    <section
+      id="profile-container"
+      data-hx-get="partials/ui-profile.partial.html"
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+    ></section>
+
+    <!-- HTMX -->
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Скрипти -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

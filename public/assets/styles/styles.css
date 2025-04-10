@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+#gameCanvas {
+  position: absolute;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.hud,
+.store,
+.profile {
+  position: absolute;
+  z-index: 10;
+}
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.toast--visible {
+  opacity: 1;
+}
