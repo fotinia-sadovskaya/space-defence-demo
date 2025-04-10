@@ -21,6 +21,7 @@ body {
   position: absolute;
   z-index: 10;
 }
+
 .toast {
   position: fixed;
   bottom: 20px;
@@ -30,9 +31,15 @@ body {
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
+  font-size: 16px;
   opacity: 0;
   transition: all 0.3s ease;
+  z-index: 100;
 }
+
 .toast--visible {
   opacity: 1;
+}
+.toast--hidden {
+  opacity: 0;
 }
