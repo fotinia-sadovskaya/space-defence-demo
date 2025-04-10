@@ -2,7 +2,7 @@ import Player from "./player.js";
 import Enemy from "./enemy.js";
 import Bullet from "./bullet.js";
 import Asteroid from "./asteroid.js";
-import { updateScore, updateHighScoreUI } from "./score.js";
+import { updateScore, updateHighScoreUI } from "../utils/score.js";
 import { showToast } from "../utils/notify.js";
 import { playSound } from "../utils/sound.js";
 import { isUpgradeOwned } from "./store.js";
